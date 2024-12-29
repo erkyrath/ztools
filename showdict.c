@@ -6,16 +6,12 @@
 
 #include "tx.h"
 
-#ifdef __STDC__
 void configure_dictionary
     (unsigned int *, unsigned long *, unsigned long *);
 void configure_abbreviations
     (unsigned int *, unsigned long *, unsigned long *, unsigned long *,
      unsigned long *);
-#else
-void configure_dictionary ();
-void configure_abbreviations ();
-#endif
+
 
 /*
  * show_dictionary
@@ -24,12 +20,8 @@ void configure_abbreviations ();
  * columns is one then also display the data associated with each word.
  */
 
-#ifdef __STDC__
 void show_dictionary (int columns)
-#else
-void show_dictionary (columns)
-int columns;
-#endif
+
 {
     unsigned long dict_address, word_address, word_table_base, word_table_end;
     unsigned int separator_count, word_size, word_count, length;
@@ -187,18 +179,10 @@ int columns;
  * word type.
  */
 
-#ifdef __STDC__
 void configure_dictionary (unsigned int *word_count,
                            unsigned long *word_table_base,
                            unsigned long *word_table_end)
-#else
-void configure_dictionary (word_count,
-                           word_table_base,
-                           word_table_end)
-unsigned int *word_count;
-unsigned long *word_table_base;
-unsigned long *word_table_end;
-#endif
+
 {
     unsigned long dict_address;
     unsigned int separator_count, word_size;
@@ -234,11 +218,8 @@ unsigned long *word_table_end;
  * Display the list of abbreviations used to compress text strings.
  */
 
-#ifdef __STDC__
 void show_abbreviations (void)
-#else
-void show_abbreviations ()
-#endif
+
 {
     unsigned long table_address, abbreviation_address;
     unsigned long abbr_table_base, abbr_table_end, abbr_data_base, abbr_data_end;
@@ -292,24 +273,12 @@ void show_abbreviations ()
  * version to get the byte address for each abbreviation.
  */
 
-#ifdef __STDC__
 void configure_abbreviations (unsigned int *abbr_count,
 			      unsigned long *abbr_table_base,
 			      unsigned long *abbr_table_end,
 			      unsigned long *abbr_data_base,
 			      unsigned long *abbr_data_end)
-#else
-void configure_abbreviations (abbr_count,
-			      abbr_table_base,
-			      abbr_table_end,
-			      abbr_data_base,
-			      abbr_data_end)
-unsigned int *abbr_count;
-unsigned long *abbr_table_base;
-unsigned long *abbr_table_end;
-unsigned long *abbr_data_base;
-unsigned long *abbr_data_end;
-#endif
+
 {
     unsigned long table_address, address;
     int i, tables;

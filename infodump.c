@@ -53,7 +53,6 @@
 
 #include "tx.h"
 
-#ifdef __STDC__
 #ifndef HAS_GETOPT
 extern int getopt (int, char *[], const char *);
 #endif
@@ -63,27 +62,12 @@ extern void show_dictionary (int);
 extern void show_objects (int);
 extern void show_tree (void);
 extern void show_verbs (int);
-#else
-extern int getopt ();
-extern void show_header ();
-extern void show_abbreviations ();
-extern void show_dictionary ();
-extern void show_objects ();
-extern void show_tree ();
-extern void show_verbs ();
-#endif
 
-#ifdef __STDC__
 static void show_help (const char *);
 static void process_story (const char *, int *, int, int);
 static void fix_dictionary (void);
 static void show_map (void);
-#else
-static void show_help ();
-static void process_story ();
-static void fix_dictionary ();
-static void show_map ();
-#endif
+
 
 /* Options */
 
@@ -109,13 +93,8 @@ extern const char *optarg;
  * Process command line arguments and process each story file.
  */
 
-#ifdef __STDC__
 int main (int argc, char *argv[])
-#else
-int main (argc, argv)
-int argc;
-char *argv[];
-#endif
+
 {
     int c, f, i, errflg = 0;
     int columns, options[MAXOPT];
@@ -206,12 +185,8 @@ char *argv[];
  * show_help
  */
 
-#ifdef __STDC__
 static void show_help (const char *program)
-#else
-static void show_help (program)
-const char *program;
-#endif
+
 {
 
     (void) fprintf (stderr, "usage: %s [options...] story-file [story-file...]\n\n", program);
@@ -238,15 +213,8 @@ const char *program;
  * Load the story and display all parts of the data file requested.
  */
 
-#ifdef __STDC__
 static void process_story (const char *name, int *options, int columns, int symbolic)
-#else
-static void process_story (name, options, columns, symbolic)
-const char *name;
-int *options;
-int columns;
-int symbolic;
-#endif
+
 {
 
     tx_printf ("\nStory file is %s\n", name);
@@ -292,11 +260,8 @@ int symbolic;
  * so that they can be printed.
  */
 
-#ifdef __STDC__
 static void fix_dictionary (void)
-#else
-static void fix_dictionary ()
-#endif
+
 {
     unsigned long address;
     int separator_count, word_size, word_count, i;
@@ -322,7 +287,6 @@ static void fix_dictionary ()
 
 }/* fix_dictionary */
 
-#ifdef __STDC__
 extern void configure_dictionary
     (unsigned int *, unsigned long *, unsigned long *);
 extern void configure_abbreviations
@@ -331,17 +295,10 @@ extern void configure_abbreviations
 extern void configure_object_tables
     (unsigned int *, unsigned long *, unsigned long *, unsigned long *,
      unsigned long *);
-#else
-extern void configure_dictionary ();
-extern void configure_abbreviations ();
-extern void configure_object_tables ();
-#endif
 
-#ifdef __STDC__
+
 static int compare_area (const void *, const void *);
-#else
-static int compare_area ();
-#endif
+
 
 #define MAX_AREA 20
 
@@ -369,11 +326,8 @@ typedef struct area_s {
  * for each area. Each area is then sorted in ascending order and displayed.
  */
 
-#ifdef __STDC__
 static void show_map (void)
-#else
-static void show_map ()
-#endif
+
 {
     unsigned int abbr_count;
     unsigned long abbr_table_base, abbr_table_end, abbr_data_base, abbr_data_end;
@@ -507,13 +461,8 @@ static void show_map ()
  * Compare two areas and sort by ascending value
  */
 
-#ifdef __STDC__
 static int compare_area (const void *a, const void *b)
-#else
-static int compare_area (a, b)
-const void *a;
-const void *b;
-#endif
+
 {
     long diff;
 

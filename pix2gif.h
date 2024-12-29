@@ -33,14 +33,6 @@
 #define __USE_FARPTRS__
 #endif
 
-/*
-  7/3 -- I'm guessing "unix" was used for non-ANSI C dialects.
-         So I'm replacing those tests with #ifndef __STDC__
-*/
-
-#ifndef __STDC__
-#define const
-#endif
 
 #define MAX_BIT 512 /* Must be less than or equal to CODE_TABLE_SIZE */
 #define CODE_SIZE 8

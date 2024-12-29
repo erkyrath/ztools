@@ -30,13 +30,7 @@
 #define get_byte(offset) ((unsigned char) header[offset])
 #define get_word(offset) ((unsigned short) (((unsigned short) header[offset] << 8) + (unsigned short) header[offset + 1]))
 
-#ifdef __STDC__
 int main (int argc, char *argv[])
-#else
-int main (argc, argv)
-int argc;
-char *argv[];
-#endif
 {
 	FILE *ifp, *ofp = NULL;
 	unsigned int i, size, h_version;

@@ -60,14 +60,10 @@
 #define ROUND_DATA(address) ((address + (story_scaler - 1)) & ~(story_scaler - 1))
 
 #ifndef HAS_GETOPT
-#ifdef __STDC__
 extern int getopt (int, char *[], const char *);
-#else
-extern int getopt ();
-#endif
+
 #endif
 
-#ifdef __STDC__
 static void process_story (const char *);
 static void decode_program (void);
 static int decode_routine (void);
@@ -96,36 +92,7 @@ static void dump_data (unsigned long, unsigned long);
 static void dump_opcode (unsigned long, int, int, int *, int);
 static void dump_operand (unsigned long *, int, int, int *, int *);
 static void print_variable (int);
-#else
-static void process_story ();
-static void decode_program ();
-static int decode_routine ();
-static int decode_code ();
-static int decode_opcode ();
-static int decode_operands ();
-static int decode_parameters ();
-static int decode_parameter ();
-static int decode_extra ();
-static void decode_strings ();
-static void scan_strings ();
-static int lookup_string ();
-static void lookup_verb ();
-static void setup_dictionary ();
-static int in_dictionary ();
-static void add_label ();
-static void add_routine ();
-static int lookup_label ();
-static int lookup_routine ();
-static void renumber_cref ();
-static void free_cref ();
-static int print_object_desc ();
-static void print_text ();
-static void print_integer ();
-static void dump_data ();
-static void dump_opcode ();
-static void dump_operand ();
-static void print_variable ();
-#endif
+
 
 static unsigned long pctable[MAX_PCS];
 static int pcindex = 0;
@@ -184,13 +151,8 @@ static int option_width = 79;
 static int option_symbols = 0;
 static unsigned long string_location = 0;
 
-#ifdef __STDC__
 int main (int argc, char *argv [])
-#else
-int main (argc, argv)
-int argc;
-char *argv [];
-#endif
+
 {
     int c, errflg = 0;
 
@@ -261,12 +223,8 @@ char *argv [];
 
 }/* main */
 
-#ifdef __STDC__
 static void process_story (const char *file_name)
-#else
-static void process_story (file_name)
-const char *file_name;
-#endif
+
 {
 
     tx_set_width (option_width);
@@ -362,11 +320,8 @@ const char *file_name;
 
 /* decode_program - Decode Z code in two passes */
 
-#ifdef __STDC__
 static void decode_program (void)
-#else
-static void decode_program ()
-#endif
+
 {
     unsigned long pc, low_pc, high_pc, prev_low_pc, prev_high_pc;
     int i, flag, vars;
@@ -481,11 +436,8 @@ static void decode_program ()
 
 /* decode_routine - Decode a routine from start address to last instruction */
 
-#ifdef __STDC__
 static int decode_routine (void)
-#else
-static int decode_routine ()
-#endif
+
 {
     unsigned long old_pc, old_start;
     cref_item_t *cref_item;
@@ -585,11 +537,8 @@ static int decode_routine ()
 
 /* decode_code - grab opcode and determine the class */
 
-#ifdef __STDC__
 static int decode_code (void)
-#else
-static int decode_code ()
-#endif
+
 {
     int status;
     int label;
@@ -633,11 +582,8 @@ static int decode_code ()
 #define caseline(opc, text, par1, par2, par3, par4, extra, type) \
     case opc: return (decode_operands (text, par1, par2, par3, par4, extra, type))
 
-#ifdef __STDC__
 static int decode_opcode (void)
-#else
-static int decode_opcode ()
-#endif
+
 {
     int code;
 
@@ -940,18 +886,8 @@ static int decode_opcode ()
 
 /* decode_operands - Decode operands of opcode */
 
-#ifdef __STDC__
 static int decode_operands (const char *opcode_name, int par1, int par2, int par3, int par4, int extra, int type)
-#else
-static int decode_operands (opcode_name, par1, par2, par3, par4, extra, type)
-const char *opcode_name;
-int par1;
-int par2;
-int par3;
-int par4;
-int extra;
-int type;
-#endif
+
 {
     size_t len;
     int i, opers, status;
@@ -999,12 +935,8 @@ int type;
 
 /* decode_parameters - Decode input parameters */
 
-#ifdef __STDC__
 static int decode_parameters (int *opers)
-#else
-static int decode_parameters (opers)
-int *opers;
-#endif
+
 {
     int status, modes, addr_mode, maxopers;
 
@@ -1081,13 +1013,8 @@ int *opers;
 
 /* decode_parameter - Decode one input parameter */
 
-#ifdef __STDC__
 static int decode_parameter (int addr_mode, int opers)
-#else
-static int decode_parameter (addr_mode, opers)
-int addr_mode;
-int opers;
-#endif
+
 {
     unsigned long addr;
     unsigned int value;
@@ -1361,11 +1288,8 @@ int opers;
 
 /* decode_extra - Decode branches, stores and text */
 
-#ifdef __STDC__
 static int decode_extra (void)
-#else
-static int decode_extra ()
-#endif
+
 {
     unsigned long addr;
     zbyte_t firstbyte;
@@ -1459,12 +1383,8 @@ static int decode_extra ()
 
 /* decode_strings - Dump text after end of code */
 
-#ifdef __STDC__
 static void decode_strings (unsigned long pc)
-#else
-static void decode_strings (pc)
-unsigned long pc;
-#endif
+
 {
     int count = 1;
 
@@ -1491,12 +1411,8 @@ unsigned long pc;
 
 /* scan_strings - build string address table */
 
-#ifdef __STDC__
 static void scan_strings (unsigned long pc)
-#else
-static void scan_strings (pc)
-unsigned long pc;
-#endif
+
 {
     unsigned long old_pc;
     int count = 1;
@@ -1529,12 +1445,8 @@ unsigned long pc;
 
 /* lookup_string - lookup a string address */
 
-#ifdef __STDC__
 static int lookup_string (unsigned long addr)
-#else
-static int lookup_string (addr)
-unsigned long addr;
-#endif
+
 {
     cref_item_t *cref_item;
 
@@ -1549,12 +1461,8 @@ unsigned long addr;
 
 }/* lookup_string */
 
-#ifdef __STDC__
 static void lookup_verb (unsigned long addr)
-#else
-static void lookup_verb (addr)
-unsigned long addr;
-#endif
+
 {
     unsigned long address, routine;
     unsigned int i, first;
@@ -1658,12 +1566,8 @@ static void setup_dictionary ()
 
 }/* setup_dictionary */
 
-#ifdef __STDC__
 static int in_dictionary (unsigned long word_address)
-#else
-static int in_dictionary (word_address)
-unsigned long word_address;
-#endif
+
 {
 
     if (word_address < dict_start || word_address > dict_end)
@@ -1676,12 +1580,8 @@ unsigned long word_address;
 
 }/* in_dictionary */
 
-#ifdef __STDC__
 static void add_label (unsigned long addr)
-#else
-static void add_label (addr)
-unsigned long addr;
-#endif
+
 {
     cref_item_t *cref_item, **prev_item, *next_item;
 
@@ -1710,12 +1610,8 @@ unsigned long addr;
 
 }/* add_label */
 
-#ifdef __STDC__
 static void add_routine (unsigned long addr)
-#else
-static void add_routine (addr)
-unsigned long addr;
-#endif
+
 {
     cref_item_t *cref_item, **prev_item, *next_item;
 
@@ -1744,13 +1640,8 @@ unsigned long addr;
 
 }/* add_routine */
 
-#ifdef __STDC__
 static int lookup_label (unsigned long addr, int flag)
-#else
-static int lookup_label (addr, flag)
-unsigned long addr;
-int flag;
-#endif
+
 {
     cref_item_t *cref_item = current_routine->child;
     int label;
@@ -1771,13 +1662,8 @@ int flag;
 
 }/* lookup_label */
 
-#ifdef __STDC__
 static int lookup_routine (unsigned long addr, int flag)
-#else
-static int lookup_routine (addr, flag)
-unsigned long addr;
-int flag;
-#endif
+
 {
     cref_item_t *cref_item = routines_base;
 
@@ -1799,12 +1685,8 @@ int flag;
 
 }/* lookup_routine */
 
-#ifdef __STDC__
 static void renumber_cref (cref_item_t *cref_item)
-#else
-static void renumber_cref (cref_item)
-cref_item_t *cref_item;
-#endif
+
 {
     int number = 1;
 
@@ -1819,12 +1701,8 @@ cref_item_t *cref_item;
 
 }/* renumber_cref */
 
-#ifdef __STDC__
 static void free_cref (cref_item_t *cref_item)
-#else
-static void free_cref (cref_item)
-cref_item_t *cref_item;
-#endif
+
 {
     cref_item_t *t;
 
@@ -1837,12 +1715,8 @@ cref_item_t *cref_item;
 
 }/* free_cref */
 
-#ifdef __STDC__
 static int print_object_desc (unsigned int obj)
-#else
-static int print_object_desc (obj)
-unsigned int obj;
-#endif
+
 {
     unsigned long address;
 
@@ -1864,12 +1738,8 @@ unsigned int obj;
 
 }/* print_object_desc */
 
-#ifdef __STDC__
 static void print_text (unsigned long *addr)
-#else
-static void print_text (addr)
-unsigned long *addr;
-#endif
+
 {
 
     tx_printf ("\"");
@@ -1878,13 +1748,7 @@ unsigned long *addr;
 
 }/* print_text */
 
-#ifdef __STDC___
 static void print_integer (unsigned int value, int flag)
-#else
-static void print_integer (value, flag)
-unsigned int value;
-int flag;
-#endif
 {
 
     if (flag)
@@ -1894,13 +1758,8 @@ int flag;
 
 }
 
-#ifdef __STDC__
 static void dump_data (unsigned long start_addr, unsigned long end_addr)
-#else
-static void dump_data (start_addr, end_addr)
-unsigned long start_addr;
-unsigned long end_addr;
-#endif
+
 {
     int i, c;
     unsigned long addr, save_addr, low_addr, high_addr;
@@ -1933,16 +1792,8 @@ unsigned long end_addr;
 
 }/* dump_data */
 
-#ifdef __STDC__
 static void dump_opcode (unsigned long addr, int op, int class, int *par, int extra)
-#else
-static void dump_opcode (addr, op, class, par, extra)
-unsigned long addr;
-int op;
-int class;
-int *par;
-int extra;
-#endif
+
 {
     int opers, modes, addr_mode, maxopers, count;
     unsigned char t;
@@ -2021,16 +1872,8 @@ int extra;
 
 }/* dump_opcode */
 
-#ifdef __STDC__
 static void dump_operand (unsigned long *addr, int addr_mode, int opers, int *par, int *count)
-#else
-static void dump_operand (addr, addr_mode, opers, par, count)
-unsigned long *addr;
-int addr_mode;
-int opers;
-int *par;
-int *count;
-#endif
+
 {
 
     if (opers < 4 && par[opers] == VAR)
@@ -2049,12 +1892,8 @@ int *count;
 
 }/* dump_operand */
 
-#ifdef __STDC__
 static void print_variable (int varnum)
-#else
-static void print_variable (varnum)
-int varnum;
-#endif
+
 {
     if (varnum < 16) {
 	if (option_symbols && print_local_name(start_of_routine, varnum - 1)) /* null */;

@@ -15,14 +15,8 @@ int optind = 1;
 int optopt;
 const char *optarg;
 
-#ifdef __STDC__
 int getopt (int argc, char *argv[], const char *opts)
-#else
-int getopt (argc, argv, opts)
-int argc;
-char *argv[];
-const char *opts;
-#endif
+
 {
     static int sp = 1;
     int c;

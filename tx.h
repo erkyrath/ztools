@@ -7,11 +7,7 @@
  */
 
 #include <assert.h>
-#ifdef __STDC__
 #include <stdarg.h>
-#else
-#include <varargs.h>
-#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -33,23 +29,10 @@
 #define EXIT_FAILURE 1
 #endif
 
-#ifndef __STDC__
-/* 7/3 -- strrchr is defined in section B3 on page 249 of K&R2. */
-/* memmove is defined on page 250 of K&R2.  This used to be an  */
-/* ifdef unix, but that doesn't work on UNIX with ANSI C        */
-#define strchr(a, b) index (a, b)
-#define memmove(a, b, c) bcopy (b, a, c)
-
-#define const
-#define void int
-
-#else
 
 #ifndef HAS_STRTOUL
 #define HAS_STRTOUL
 #endif
-
-#endif /* __STDC__ */
 
 /* Z types */
 
@@ -371,7 +354,6 @@ extern option_inform;
 
 extern unsigned long file_size;
 
-#ifdef __STDC__
 int decode_text (unsigned long *);
 void close_story (void);
 void configure (int, int);
@@ -383,19 +365,7 @@ zword_t read_data_word (unsigned long *);
 void tx_printf (const char *, ...);
 void tx_fix_margin (int);
 void tx_set_width (int);
-#else
-int decode_text ();
-void close_story ();
-void configure ();
-void load_cache ();
-void open_story ();
-void read_page ();
-zbyte_t read_data_byte ();
-zword_t read_data_word ();
-void tx_printf ();
-void tx_fix_margin ();
-void tx_set_width ();
-#endif
+
 
 /* Inform version codes */
 #define INFORM_5		500
@@ -403,7 +373,6 @@ void tx_set_width ();
 #define INFORM_610		610
 
 /* Grammar prototypes */
-#ifdef __STDC__
 void configure_parse_tables
     (unsigned int *, unsigned int *, unsigned int *, unsigned int *, unsigned int *,
      unsigned long *, unsigned long *, unsigned long *, unsigned long *,
@@ -429,13 +398,7 @@ void show_syntax_of_parsing_routine(unsigned long parsing_routine,
 int is_gv2_parsing_routine(unsigned long parsing_routine,
 				    unsigned long verb_table_base,
 				    unsigned int verb_count);
-#else
-void configure_parse_tables ();
-void show_verb_grammar ();
-void show_syntax_of_action();
-void show_syntax_of_parsing_routine();
-int is_gv2_parsing_routine();
-#endif
+
 
 #ifndef SEEK_SET
 #define SEEK_SET 0

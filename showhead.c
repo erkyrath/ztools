@@ -6,11 +6,8 @@
 
 #include "tx.h"
 
-#ifdef __STDC__
 static void show_header_extension (void);
-#else
-static void show_header_extension ();
-#endif
+
 
 static const char *interpreter_flags1[] = {
     "Byte swapped data",
@@ -79,11 +76,8 @@ static const char *game_flags2[] = {
  * The format of the header is described by the header structure.
  */
 
-#ifdef __STDC__
 void show_header (void)
-#else
-void show_header ()
-#endif
+
 {
     unsigned long address;
     int i, j, list;
@@ -356,11 +350,8 @@ void show_header ()
 
 }/* show_header */
 
-#ifdef __STDC__
 static void show_header_extension (void)
-#else
-static void show_header_extension ()
-#endif
+
 {
     zword_t tlen;
 
