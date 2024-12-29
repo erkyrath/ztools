@@ -1,6 +1,8 @@
 #include "tx.h"
+#include "info.h"
 #include "symbols.h"
 #include <fcntl.h>
+
 /*
  * symbols.c
  *

@@ -290,15 +290,6 @@ static void fix_dictionary (void)
 
 }/* fix_dictionary */
 
-extern void configure_dictionary
-    (unsigned int *, unsigned long *, unsigned long *);
-extern void configure_abbreviations
-    (unsigned int *, unsigned long *, unsigned long *, unsigned long *,
-     unsigned long *);
-extern void configure_object_tables
-    (unsigned int *, unsigned long *, unsigned long *, unsigned long *,
-     unsigned long *);
-
 
 static int compare_area (const void *, const void *);
 
