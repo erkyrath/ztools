@@ -1,4 +1,5 @@
 #include "tx.h"
+#include "symbols.h"
 #include <fcntl.h>
 /*
  * symbols.c
@@ -92,7 +93,7 @@ static int get_type_from_name(char *tname)
  *
  * Prints the name of the attribute, if known.
  */
-void init_symbols(char *fname)
+void init_symbols(const char *fname)
 
 {
 	long tmp;
