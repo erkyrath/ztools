@@ -53,6 +53,7 @@
  */
 
 #include "tx.h"
+#include "info.h"
 
 #define MAX_PCS 100
 

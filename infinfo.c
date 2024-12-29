@@ -8,6 +8,7 @@
  */
 
 #include "tx.h"
+#include "info.h"
 
 void configure_inform_tables (unsigned long obj_data_end, /* everything follows from this */
                               unsigned short *inform_version,
@@ -17,7 +18,6 @@ void configure_inform_tables (unsigned long obj_data_end, /* everything follows 
                               unsigned long *property_names_end,
                               unsigned long *attr_names_base,
                               unsigned long *attr_names_end)
-
 {
 	unsigned long address;
 	zword_t num_properties;

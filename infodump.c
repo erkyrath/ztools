@@ -53,6 +53,7 @@
 
 #include "tx.h"
 #include "symbols.h"
+#include "info.h"
 
 #ifndef HAS_GETOPT
 extern int getopt (int, char *[], const char *);
