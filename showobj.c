@@ -6,6 +6,7 @@
 
 #include "tx.h"
 #include "info.h"
+#include "symbols.h"
 
 void configure_object_tables
     (unsigned int *, unsigned long *, unsigned long *, unsigned long *,

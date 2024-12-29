@@ -6,6 +6,7 @@
 
 #include "tx.h"
 #include "info.h"
+#include "symbols.h"
 
 static void show_verb_parse_table
 	(unsigned long, unsigned int, unsigned int, unsigned int, unsigned long, unsigned long);
