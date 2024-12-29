@@ -94,7 +94,7 @@ int main (int argc, char *argv[])
 	while (h_file_size) {
 		if ((n = fread (buffer, 1, (size_t) size, ifp)) != size) {
 			perror ("fread: story data");
-			fprintf(stderr, "Got %d bytes expected %d\n", n, size);
+			fprintf(stderr, "Got %lu bytes expected %d\n", n, size);
 			exit (EXIT_FAILURE);
 		}
 		if (ofp != NULL && fwrite (buffer, (size_t) size, 1, ofp) != 1) {
