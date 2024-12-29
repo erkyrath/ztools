@@ -1211,11 +1211,12 @@ static int decode_parameter (int addr_mode, int opers)
 	    break;
 
 	case PCHAR:
-	    if (decode.first_pass == 0)
+	    if (decode.first_pass == 0) {
 		if (isprint ((char) value))
 		    tx_printf ("\'%c\'", (char) value);
 		else
 		    print_integer (value, addr_mode == BYTE_IMMED);
+	    }
 	    break;
 
 	case VATTR:
