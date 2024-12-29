@@ -54,6 +54,7 @@
 
 #include "tx.h"
 #include "info.h"
+#include "symbols.h"
 
 #define MAX_PCS 100
 

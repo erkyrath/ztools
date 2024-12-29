@@ -479,7 +479,7 @@ void show_verbs (int symbolic)
 
 	unsigned int obj_count;
 	unsigned long obj_table_base, obj_table_end, obj_data_base, obj_data_end;
-	unsigned int inform_version;
+	unsigned short inform_version;
 	unsigned long class_numbers_base, class_numbers_end;
 	unsigned long property_names_base, property_names_end;
 	unsigned long attr_names_base, attr_names_end;
