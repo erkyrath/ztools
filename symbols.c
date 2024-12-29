@@ -287,8 +287,6 @@ int print_local_name(unsigned long start_of_routine,
 					 int local_no)
 
 {
-	start_of_routine;
-	local_no;
 	return 0;
 }
 
@@ -296,7 +294,6 @@ int print_global_name(unsigned long start_of_routine,
 					 int global_no)
 
 {
-	start_of_routine;
 	if ((global_no < global_entries) && global_names_table[global_no].symtype == sym_global) {
 		tx_printf(global_names_table[global_no].name);
 		return 1;
