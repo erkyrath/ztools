@@ -50,6 +50,8 @@
  *    Remove GV2A support
  *    Add unicode disassembly support
  *    Add Inform and user symbol table support
+ *
+ *    Update for modern compilers (STDC required, more header declarations)
  */
 
 #include "tx.h"
