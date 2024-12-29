@@ -27,7 +27,7 @@ IOBJS = infodump.o showhead.o showdict.o showobj.o showverb.o txio.o infinfo.o s
 PINC = pix2gif.h
 POBJS = pix2gif.o
 
-TINC = tx.h
+TINC = tx.h symbols.h info.h
 TOBJS = txd.o txio.o showverb.o infinfo.o symbols.o showobj.o
 
 all : check infodump pix2gif txd doc
