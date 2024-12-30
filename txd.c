@@ -1479,7 +1479,6 @@ static void lookup_verb (unsigned long addr)
 	if (routine == addr) {
 	    if (first) {
 		tx_printf ("    Action routine for:\n");
-		tx_printf ("        ");
 		tx_fix_margin(1);
 		first = 0;
 	    }
@@ -1500,7 +1499,6 @@ static void lookup_verb (unsigned long addr)
 	if (is_gv2_parsing_routine(addr, verb_table_base,
 				   verb_count)) {
 	    tx_printf ("    Parsing routine for:\n");
-	    tx_printf ("        ");
 	    tx_fix_margin(1);
 	    first = 0;
 	   show_syntax_of_parsing_routine( addr,
@@ -1518,7 +1516,6 @@ static void lookup_verb (unsigned long addr)
 	    if (routine == addr) {
 		    if (first) {
 			    tx_printf ("    Parsing routine for:\n");
-			    tx_printf ("        ");
 			    tx_fix_margin(1);
 			    first = 0;
 		    }
@@ -1538,7 +1535,6 @@ static void lookup_verb (unsigned long addr)
 	    if (routine == addr) {
 		    if (first) {
 			tx_printf ("    Pre-action routine for:\n");
-			tx_printf ("        ");
 			tx_fix_margin(1);
 			first = 0;
 		    }

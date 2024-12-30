@@ -735,6 +735,7 @@ void show_syntax_of_action( 	int action,
 			parse_entry = address;
 			action_index = read_data_word(&address);
 			if (action_index == (unsigned int) action) {
+				tx_printf ("      verb: ");
 				show_verb_grammar (parse_entry, verb_address, (int) parser_type, 0,
 								   (int) 0, 0L, 0L);
 				tx_printf ("\n");
@@ -751,6 +752,7 @@ void show_syntax_of_action( 	int action,
 					parse_entry = verb_entry;
 					action_index = read_data_word(&verb_entry);
 					if (action_index == (unsigned int) action) {
+						tx_printf ("      verb: ");
 						show_verb_grammar (parse_entry, verb_address, (int) parser_type, 1,
 							   0, 0L, 0L);
 						tx_printf ("\n");
@@ -767,6 +769,7 @@ void show_syntax_of_action( 	int action,
 					parse_entry = verb_entry;
 					action_index = read_data_word(&verb_entry);
 					if (action_index == (unsigned int) action) {
+						tx_printf ("      verb: ");
 						show_verb_grammar (parse_entry, verb_address, (int) parser_type, 2,
 							   0, 0L, 0L);
 						tx_printf ("\n");
@@ -806,6 +809,7 @@ void show_syntax_of_action( 	int action,
 				/* Check if this verb/sentence structure uses the action routine */
 		
 				if (action_index == (unsigned int) action) {
+					tx_printf ("      verb: ");
 					show_verb_grammar (parse_entry, VERB_NUM(i, parser_type), (int) parser_type, 0,
 									   (int) prep_type, prep_table_base, attr_names_base);
 					tx_printf ("\n");
