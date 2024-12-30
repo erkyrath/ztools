@@ -81,6 +81,7 @@ typedef struct cache_entry {
 static cache_entry_t *update_cache (unsigned int);
 static unsigned long get_story_size (void);
 static void tx_write_char (int);
+static void tx_textchar (char);
 
 
 static FILE *gfp = NULL;
@@ -408,7 +409,7 @@ int decode_text (unsigned long *address)
                 else {
 
                     ascii_flag = 0;
-                    tx_printf ("%c", (char) (ascii | code));
+                    tx_textchar ((char) (ascii | code));
                     char_count++;
 
                 }
@@ -435,7 +436,7 @@ int decode_text (unsigned long *address)
 
 		else if (shift_state == 2 && code == 1 && (unsigned int) header.version > V1)
 
-                    tx_printf ("%c", (option_inform) ? '^' : '\n');
+                    tx_textchar ((option_inform) ? '^' : '\n');
 
                 /*
                  * This is a normal character so select it from the character
@@ -444,7 +445,7 @@ int decode_text (unsigned long *address)
 
                 else {
 
-                    tx_printf ("%c", (char) lookup_table[shift_state][code]);
+                    tx_textchar ((char) lookup_table[shift_state][code]);
                     char_count++;
 
                 }
@@ -486,7 +487,7 @@ int decode_text (unsigned long *address)
                         if (code == 1) {
 
                             if ((unsigned int) header.version == V1) {
-                                tx_printf ("%c", (option_inform) ? '^' : '\n');
+                                tx_textchar ((option_inform) ? '^' : '\n');
                                 char_count++;
                             } else {
                                 synonym_flag = 1;
@@ -766,3 +767,19 @@ void tx_set_width (int width)
 }/* tx_set_width */
 
 
+static void tx_textchar (char ch)
+{
+    if (ch == '\n') {
+        tx_printf("\\n");
+        return;
+    }
+    if (ch == '\t') {
+        tx_printf("\\t");
+        return;
+    }
+    if (ch == '"') {
+        tx_printf("\\\"");
+        return;
+    }
+    tx_printf("%c", ch);
+}
